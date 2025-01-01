@@ -8,11 +8,11 @@ class StudentController {
 
     //Menampilkan seluruh resource
     async index(req,res) {
-        //
-        const Students = await Student.all();
+        //Menggunakan async/await umtuk memanggil method all daromodel student
+        const students = await Student.all();
         const data = {
             message: "Menampilkan Semua Students",
-            data: Students,
+            data: students,
         };
         res.json(data);
 
@@ -21,11 +21,11 @@ class StudentController {
     // Tambah Data Student Baru
     async store(req,res) {
         const { nama, nim, email, jurusan } = req.body;
-        //
-        const Students = await Student.create(nama, nim, email, jurusan);
+        //Memanfaatkan method create  untuk menambhkan data ke database
+        const student = await Student.create(nama, nim, email, jurusan);
         const data = {
             message: "Menambahkan Data Student: ${name}",
-            data: Students,
+            data: student,
         };
         res.json(data);
     }
