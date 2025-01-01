@@ -1,11 +1,15 @@
 //Mengimpor data students dari file lain
-const Students = require("../data/students");
+//const Students = require("../data/students");
+const Student = require("../models/Student");
+const Students = require("../models/Student");
 
 // Class Untuk Mengatur operasi create,read,update & delete data students
 class StudentController {
 
-    //Menampilkan Dta Students
-    index(req,res) {
+    //Menampilkan seluruh resource
+    async index(req,res) {
+        //
+        const Students = await Student.all();
         const data = {
             message: "Menampilkan Semua Students",
             data: Students,
@@ -15,9 +19,10 @@ class StudentController {
     }
 
     // Tambah Data Student Baru
-    store(req,res) {
-        const { name } = req.body;
-        Students.push(name);
+    async store(req,res) {
+        const { nama, nim, email, jurusan } = req.body;
+        //
+        const Students = await Student.create(nama, nim, email, jurusan);
         const data = {
             message: "Menambahkan Data Student: ${name}",
             data: Students,
@@ -28,21 +33,21 @@ class StudentController {
     //Mengedit Data Student Berdasarkan id
     update(req,res) {
         const { id } = req.params;
-        const { name } = req.body;
-        Students[id] = name; //Ubah data sesuai id
+        const { nama } = req.body;
+        
         const data = {
-            message: "Mengedit Student ID ${id}, Nama ${name}",
-            data: Students,
+            message: "Mengedit Student ID ${id}, Nama ${nama}",
+            data: [],
         };
         res.json(data);
     }
     // Menghapus Data Student Berdasarkan id
     destroy(req,res) {
         const { id } = req.params;
-        Students.splice(id, 1); // Hapus data sesuai id
+        
         const data = {
             message: "Menghapus Student ID ${id}",
-            data: Students,
+            data: [],
         };
         res.json(data);
     }
