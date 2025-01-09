@@ -22,5 +22,8 @@ router.put("/students/:id", StudentController.update);
 // Route untuk menghapus data student berdasrkan id
 router.delete("/students/:id", StudentController.destroy);
 
+// Route untuk menampilkan detail student
+router.get("/students/:id", StudentController.show);
+
 // Mengekspor route untuk digunakan di file uytama
 module.exports = router;
