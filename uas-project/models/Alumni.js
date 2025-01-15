@@ -69,6 +69,17 @@ static async create(data) {
 
         });
     }
+
+    // Mencari data Alumni berdasarkan nama
+    static searchByName(name) {
+        return new Promise(( resolve, reject) => {
+            const sql = "SELECT FROM alumni WHERE name LIKE = ?";
+            db.query(sql, ['%${name}%'], (err, results) => {
+                if (err) reject(err);
+                resolve(results);
+            });
+        });
+    }
   // buat fungsi
 }
 

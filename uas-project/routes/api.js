@@ -28,5 +28,7 @@ router.delete("/alumnis/:id", AlumniController.destroy);
 // Route untuk menampilkan detail Alumni
 router.get("/alumnis/:id", AlumniController.show);
 
+// Routingvuntuk pencarian Alumni berdasarkan nama
+router.get("/alumnis/search/:name", AlumniController.search);
 // export router
 module.exports = router;

@@ -112,7 +112,17 @@ async show(req,res) {
   }
   
 }
+//Mencari Alumni berdasarkan nama
+async search(req,res) {
+    const { name } = req.query;
+    const alumni = await Alumni.searchByName(name);
 
+    // Mengirimkan response dengan status dan pesan berdasarkan hasil pencrian alumni
+    res.status(alumni.length > 0 ? 200 : 404).json({
+        message: alumni.length > 0 ? "Hasil Pencarian Alumni" : "Data Alumni Tidak Ditemukan",
+        data: alumni.length > 0 ? alumni : [],
+    });
+}
 
   // buat fungsi
 }
