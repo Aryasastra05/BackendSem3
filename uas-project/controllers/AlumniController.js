@@ -123,7 +123,21 @@ async search(req,res) {
         data: alumni.length > 0 ? alumni : [],
     });
 }
+// menemukan Alumni berdasarkan status
+async findByStatus(req,res) {
+    const { status } = req.query;
+    try{
+        const alumni = await Alumni.findByStatus(status);
 
+        //
+        res.status(alumni.length > 0 ? 200 : 404).json({
+            message: alumni.length > 0 ? "Menampilkan Alumni Berdasarkan dengan status " : "Data Alumni Tidak Ditemukan",
+            data: alumni.length > 0 ? alumni : [],
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Terjadi kesalahan pada server", error: error.message });
+    }
+}
   // buat fungsi
 }
 

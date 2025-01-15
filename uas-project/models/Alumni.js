@@ -80,6 +80,27 @@ static async create(data) {
             });
         });
     }
+
+    // Mencari data Alimni berdasarkan id
+    static find(id) {
+        return new Promise((resolve, reject) => {
+            const sql = "SELECT * FROM alumni WHERE id = ?";
+            db.query(sql, id, (err, results) => {
+                if (err) reject(err);
+                resolve(results);
+            });
+        });
+    }
+
+    static async findByStatus(status) {
+        return new Promise(( resolve, reject) => {
+            const sql = "SELECT FROM alumni WHERE status LIKE = ?";
+            db.query(sql, [status], (err, results) => {
+                if (err) reject(err);
+                resolve(results);
+            });
+        });
+    }
   // buat fungsi
 }
 

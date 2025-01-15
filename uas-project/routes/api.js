@@ -30,5 +30,8 @@ router.get("/alumnis/:id", AlumniController.show);
 
 // Routingvuntuk pencarian Alumni berdasarkan nama
 router.get("/alumnis/search/:name", AlumniController.search);
+
+// Routing untuk mendapatkan data Alumni berdasarkan status tertentu
+router.get("/alumnis/status", AlumniController.findByStatus);
 // export router
 module.exports = router;
