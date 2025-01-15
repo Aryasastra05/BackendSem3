@@ -20,13 +20,13 @@ router.get("/alumnis", AlumniController.index);
 router.post("/alumnis", AlumniController.store);
 
 // Route untuk memperbarui data Alumni berdasrkab id
-router.put("/alumni/:id", AlumniController.update);
+router.put("/alumnis/:id", AlumniController.update);
 
 // Route untuk menghapus data Alumni berdasrkan id
-router.delete("/alumni/:id", AlumniController.destroy);
+router.delete("/alumnis/:id", AlumniController.destroy);
 
 // Route untuk menampilkan detail Alumni
-router.get("/alumni/:id", AlumniController.show);
+router.get("/alumnis/:id", AlumniController.show);
 
 // export router
 module.exports = router;
